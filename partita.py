@@ -9,7 +9,11 @@ class partita:
     def lancio(self, numero_lancio, restanti=10, raddoppio=False): # Se nei precedenti lanci ho fatto strike o spare, accantono il valore del piunteggio in extra point
         indice_lancio = numero_lancio
         birilli_restanti = restanti
-        birilli = random.randint(0, birilli_restanti)
+        # birilli = random.randint(0, birilli_restanti)
+        if birilli_restanti == 10:
+            birilli = 10
+        else:
+            birilli = 0
         self.lanci[indice_lancio] = birilli
         if self.lanci[indice_lancio] == birilli_restanti:
             self.str_spare[indice_lancio] = True  # Strike/Spare in corrispondenza del tiro nel game

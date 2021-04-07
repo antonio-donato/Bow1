@@ -13,7 +13,6 @@ def double(strike):
 if __name__ == '__main__':
     PARTITA_EXTRA = 9
     match = []                      # Lista contenente gli Oggetti "partita"
-    punteggioTotaleIncrementale = 0
     ho_fatto_strike = 0             # può assumere il valore di 2 o 1 a seconda di uno STRIKE o di uno SPARE
     raddoppio = False               # quando la variabile ho_fatto_strike è > 0 raddoppio il punteggio del lancio
 
@@ -62,6 +61,8 @@ if __name__ == '__main__':
             if pin_restanti == 0:
                 ho_fatto_strike = 1
 
+#  rappresentazione grafica
+    punteggioTotaleIncrementale = 0
     for index in range(10):
         print(f"Risultati del lancio {index + 1}: \nTiri: {match[index].lanci}")
         if match[index].extra_point != 0: print(f"Extra punti: {match[index].extra_point}")
@@ -79,3 +80,10 @@ if __name__ == '__main__':
         if index == 9:
             if match[index].str_spare[2]:
                 print("Hai fatto Strike!")
+
+        for calcolo in match[index].lanci:
+            punteggioTotaleIncrementale += calcolo
+
+        punteggioTotaleIncrementale += match[index].extra_point
+
+    print(f"\nPunteggio Finale: {punteggioTotaleIncrementale}")
